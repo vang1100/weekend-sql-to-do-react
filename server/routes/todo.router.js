@@ -51,4 +51,16 @@ router.put('/:id', (req, res) => {
 
 // DELETE
 
+router.delete('/:id', (req, res) => {
+    console.log('req.params', req.params);
+    let queryText = `DELETE FROM "lattes" WHERE "id" = $1;`;
+    pool.query(queryText, [req.params.id])
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error in req.params.id', error);
+            res.sendStatus(500);
+        });
+});
 module.exports = router;
