@@ -32,6 +32,23 @@ router.post('/', (req, res) => {
 });
 // PUT
 
+router.put('/:id', (req, res) => {
+    console.log(req.body);
+    console.log(req.params);
+        let queryText = `
+        UPDATE "lattes" set "milk" = $1
+        WHERE "id" = $2;
+        `;
+    pool.query(queryText, [req.body.milk, req.params.id])
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error in put/api/todo/:id', error);
+            res.sendStatus(500);
+        });
+});
+
 // DELETE
 
 module.exports = router;
