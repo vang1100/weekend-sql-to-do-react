@@ -17,6 +17,19 @@ router.get('/', (req, res) => {
 });
 // POST
 
+router.post('/', (req, res) => {
+    let newLattes = req.body;
+    let queryText = `INSERT INTO "lattes" ("flavor", "milk", "oz")
+        VALUES ($1, $2, $3)`;
+    pool.query(queryText, [newLattes.flavor, newLattes.milk, newLattes.oz])
+        .then(() => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log('error in query', error);
+            res.sendStatus(500);
+        });
+});
 // PUT
 
 // DELETE
