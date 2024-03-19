@@ -14,4 +14,4 @@ VALUES
 	('chai', 'whole', '6'),
 	('caramel', 'whole', '10'),
 	('vanilla', 'almond', '6'),
-	('rose', 'almond', '10') ;
+	('rose', 'almond', '10') 
