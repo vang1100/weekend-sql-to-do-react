@@ -2,7 +2,7 @@ CREATE TABLE "cafe" (
 	"id" SERIAL PRIMARY KEY,
 	"item" VARCHAR (100) NOT NULL,
 	"popular" BOOLEAN,
-	"price" INTEGER
+	"price" DECIMAL
 );
 INSERT INTO "cafe" 
 
