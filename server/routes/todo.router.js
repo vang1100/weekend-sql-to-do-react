@@ -54,4 +54,25 @@ router.post('/', (req, res) => {
 
 // DELETE
 
+router.delete('/:id', (req, res) => {
+    console.log('req.params', req.params);
+
+    const idToDelete = req.params.id;
+
+    const queryText = 'DELETE FROM "cafe" WHERE "id" = $1;';
+
+    // test in postico, succcessful
+
+    pool.query(queryText, [idToDelete])
+    .then(response => {
+        console.log('cafe with id was deleted', response);
+        res.sendStatus(200);
+    })
+    .catch(error =>{
+        console.log('unable to delete cafe with id, error', error);
+        res.sendStatus(500);
+    });
+
+});
+
 module.exports = router;
