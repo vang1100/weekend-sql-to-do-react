@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
     res.sendStatus(500);
   })
 });
-// POST - to add data to DB
+// POST - to add data to DB - getting an internal server error
 
 router.post('/', (req, res) => {
    // console.log('req.body', req.body);
@@ -32,11 +32,11 @@ router.post('/', (req, res) => {
     const popular = req.body.popular;
     const price = req.body.price;
 
-   const queryText = `
-                    INSERT INTO "cafe"
+    const queryText = `
+                    INSERT INTO cafe
                         ("item", "popular", "price")
                     VALUES
-                        ($1, $2, $3);
+                        ($1);
                     
                     `;
     pool.query(queryText, [item, popular, price])
