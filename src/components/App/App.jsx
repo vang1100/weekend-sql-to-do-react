@@ -74,6 +74,19 @@ function App () {
   }
 
   // PUT CAFE ITEMS
+
+  const toggleItem = (id) => {
+   // console.log('testing', id);
+
+   axios.put(`/api/todo/toggle/${id}`)
+    .then((response) => {
+      console.log(response);
+      grabCafeItems();
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
   
   return (
     <div>
@@ -113,7 +126,7 @@ function App () {
                     <tr>
                   <td> {cafe.item} </td>
                   <td>{cafe.price}</td>
-                  <td><button>X</button></td>
+                  <td><button onClick={() => {toggleItem(cafe.id)}}>{cafe.popular ? 'true' : 'false'}</button></td>
                   <td><button onClick = {() => deleteItem(cafe.id)}>DELETE</button></td>
               </tr>
               </tbody>

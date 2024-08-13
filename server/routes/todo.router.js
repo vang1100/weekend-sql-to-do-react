@@ -55,7 +55,7 @@ router.post('/', (req, res) => {
 router.put('/toggle/:id', (req, res) => {
   let { id } = req.params;
   const sqlText = `
-      UPDATE "cafe" SET "popular" = true
+      UPDATE "cafe" SET "popular" = NOT "popular"
       WHERE "id" = $1;
   `;
   pool.query(sqlText, [id])
