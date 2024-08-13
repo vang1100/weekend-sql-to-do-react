@@ -58,6 +58,21 @@ function App () {
 
   // DELETE CAFE ITEMS
 
+  const deleteItem = (id) => {
+
+  //  console.log('delete works?');
+
+  axios.delete(`api/todo/${id}`)
+    .then((response) => {
+      console.log(response);
+      grabCafeItems();
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+
+  }
+
   // PUT CAFE ITEMS
   
   return (
@@ -98,8 +113,8 @@ function App () {
                     <tr>
                   <td> {cafe.item} </td>
                   <td>{cafe.price}</td>
-                  
                   <td><button>X</button></td>
+                  <td><button onClick = {() => deleteItem(cafe.id)}>DELETE</button></td>
               </tr>
               </tbody>
                 </table>
