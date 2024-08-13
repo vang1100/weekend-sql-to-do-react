@@ -34,12 +34,12 @@ router.post('/', (req, res) => {
 
     const queryText = `
                     INSERT INTO cafe
-                        ("item", "popular", "price")
+                        ("item", "price")
                     VALUES
-                        ($1);
+                        ($1, $2);
                     
                     `;
-    pool.query(queryText, [item, popular, price])
+    pool.query(queryText, [item, price])
     .then(result => {
         console.log('database insert resposnse successful', result);
         res.sendStatus(201);
