@@ -1,12 +1,15 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import Header from '../Header/Header';
+import Form from '../Form/Form';
+import CafeList from '../CafeList/CafeList';
+
 
 function App () {
 
   let [cafeArray, setCafeArray] = useState([]);
-  let [cafeItem, setCafeItem] = useState('');
-  let [cafePrice, setCafePrice] = useState('');
+  // let [cafeItem, setCafeItem] = useState('');
+  // let [cafePrice, setCafePrice] = useState('');
 
 
   useEffect(() => {
@@ -28,66 +31,66 @@ function App () {
 
   // POST CAFE ITEMS
 
-  const addItem = (event) => {
-    event.preventDefault();
+  // const addItem = (event) => {
+  //   event.preventDefault();
     
-    // pack up our data
+  //   // pack up our data
 
-    const addToMenu = {
-      item: cafeItem,
-      price: cafePrice
-    }
+  //   const addToMenu = {
+  //     item: cafeItem,
+  //     price: cafePrice
+  //   }
 
-    // axios post route
+  //   // axios post route
 
-    axios.post('/api/todo', addToMenu)
-      .then((response) => {
-        console.log(response);
+  //   axios.post('/api/todo', addToMenu)
+  //     .then((response) => {
+  //       console.log(response);
 
-    // clear the inputs
-        setCafeItem('');
-        setCafePrice('');
+  //   // clear the inputs
+  //       setCafeItem('');
+  //       setCafePrice('');
 
-        grabCafeItems('');
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+  //       grabCafeItems('');
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
     
 
-  }
+  // }
 
   // DELETE CAFE ITEMS
 
-  const deleteItem = (id) => {
+  // const deleteItem = (id) => {
 
-  //  console.log('delete works?');
+  // //  console.log('delete works?');
 
-  axios.delete(`api/todo/${id}`)
-    .then((response) => {
-      console.log(response);
-      grabCafeItems();
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+  // axios.delete(`api/todo/${id}`)
+  //   .then((response) => {
+  //     console.log(response);
+  //     grabCafeItems();
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   })
 
-  }
+  // }
 
   // PUT CAFE ITEMS
 
-  const toggleItem = (id) => {
-   // console.log('testing', id);
+  // const toggleItem = (id) => {
+  //  // console.log('testing', id);
 
-   axios.put(`/api/todo/toggle/${id}`)
-    .then((response) => {
-      console.log(response);
-      grabCafeItems();
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-  }
+  //  axios.put(`/api/todo/toggle/${id}`)
+  //   .then((response) => {
+  //     console.log(response);
+  //     grabCafeItems();
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   })
+  // }
   
   return (
     <div>
@@ -101,6 +104,8 @@ function App () {
       {/* <h2>Let's add more to the menu! :D </h2> */} 
 
       <Header />
+      <Form grabCafeItems={grabCafeItems}/>
+      <CafeList grabCafeItems={grabCafeItems} cafeArray={cafeArray}/>
 
       {/* <form onSubmit={addItem}>
         <label htmlFor="item-input">Item:</label>

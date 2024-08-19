@@ -1,4 +1,37 @@
-function CafeList(){
+import axios from 'axios';
+
+function CafeList(props){
+    const grabCafeItems = props.grabCafeItems;
+    const cafeArray = props.cafeArray;
+    
+     // DELETE CAFE ITEMS
+
+  const deleteItem = (id) => {
+
+    //  console.log('delete works?');
+  
+    axios.delete(`api/todo/${id}`)
+      .then((response) => {
+        console.log(response);
+        grabCafeItems();
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  
+    }
+    const toggleItem = (id) => {
+        // console.log('testing', id);
+     
+        axios.put(`/api/todo/toggle/${id}`)
+         .then((response) => {
+           console.log(response);
+           grabCafeItems();
+         })
+         .catch((error) => {
+           console.log(error);
+         })
+       }
     return(
         <>
         <ul>
