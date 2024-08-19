@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
+import Header from '../Header/Header';
 
 function App () {
 
@@ -90,26 +91,27 @@ function App () {
   
   return (
     <div>
-      <h1>PADEE'S CAFE</h1>
+      {/* <h1>PADEE'S CAFE</h1>
 
-      tesing jsonstringify:
+      {/* tesing jsonstringify:
       <ul>
       {JSON.stringify(cafeArray)}
-      </ul>
+      </ul> */}
 
-      <h2>Let's add more to the menu! :D </h2>
+      {/* <h2>Let's add more to the menu! :D </h2> */} 
 
-      <form onSubmit={addItem}>
+      <Header />
+
+      {/* <form onSubmit={addItem}>
         <label htmlFor="item-input">Item:</label>
         <input id="item-input" onChange={(event) => setCafeItem(event.target.value)} value={cafeItem}></input>
         <label htmlFor="price-input">Price:</label>
         <input id="price-input" onChange={(event) => setCafePrice(event.target.value)} value ={cafePrice}></input>
         <button type="submit">ADD</button>
-      </form>
-      <p> {cafeItem} costs {cafePrice}</p>
-      <h2>What's on the menu?</h2>
+      </form> */}
+      {/* <p> {cafeItem} costs {cafePrice}</p> */}
     
-      <ul>
+      {/* <ul>
         {cafeArray.map(
           function(cafe) {
             return (
@@ -135,7 +137,7 @@ function App () {
             )
           }
         )}
-      </ul>
+      </ul> */}
     </div>
   );
 
