@@ -1,4 +1,11 @@
 import axios from 'axios';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 
 function CafeList(props){
     const grabCafeItems = props.grabCafeItems;
@@ -34,10 +41,40 @@ function CafeList(props){
        }
     return(
         <>
-        <ul>
+        <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            {/* <TableCell>Cafe Item</TableCell> */}
+            <TableCell>What's on the menu?</TableCell>
+            <TableCell align="left">Price</TableCell>
+            <TableCell align="right">Popular</TableCell>
+      
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {cafeArray.map((cafe) => (
+            <TableRow
+              key={cafe.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              {/* <TableCell component="th" scope="row">
+                {cafe.id}
+              </TableCell> */}
+              <TableCell>{cafe.item}</TableCell>
+              <TableCell align="left">{cafe.price}</TableCell>
+              <TableCell align="right"><button onClick={() => {toggleItem(cafe.id)}}>{cafe.popular ? 'true' : 'false'}</button></TableCell>
+              
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+        {/* <ul>
         {cafeArray.map(
           function(cafe) {
             return (
+              
               <li key={cafe.id}>
                 <table>
                   <thead>
@@ -60,7 +97,7 @@ function CafeList(props){
             )
           }
         )}
-      </ul>
+      </ul> */}
         </>
     )
 }
