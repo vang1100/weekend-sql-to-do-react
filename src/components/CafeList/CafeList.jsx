@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button'
 
 function CafeList(props){
     const grabCafeItems = props.grabCafeItems;
@@ -46,9 +47,10 @@ function CafeList(props){
         <TableHead>
           <TableRow>
             {/* <TableCell>Cafe Item</TableCell> */}
-            <TableCell>What's on the menu?</TableCell>
-            <TableCell align="left">Price</TableCell>
-            <TableCell align="right">Popular</TableCell>
+            <TableCell>ITEMS</TableCell>
+            <TableCell align="left">PRICE</TableCell>
+            <TableCell align="right">POPULAR?</TableCell>
+            <TableCell align="right">REMOVE ITEM?</TableCell>
       
           </TableRow>
         </TableHead>
@@ -63,8 +65,9 @@ function CafeList(props){
               </TableCell> */}
               <TableCell>{cafe.item}</TableCell>
               <TableCell align="left">{cafe.price}</TableCell>
-              <TableCell align="right"><button onClick={() => {toggleItem(cafe.id)}}>{cafe.popular ? 'true' : 'false'}</button></TableCell>
-              
+              <TableCell align="right"><Button color="success" variant="contained" onClick={() => {toggleItem(cafe.id)}}>{cafe.popular ? 'true' : 'false'}</Button></TableCell>
+              <TableCell align="right"><Button color="error" onClick = {() => deleteItem(cafe.id)}>DELETE</Button></TableCell>
+
             </TableRow>
           ))}
         </TableBody>
